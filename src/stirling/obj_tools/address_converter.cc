@@ -27,6 +27,7 @@ namespace stirling {
 namespace obj_tools {
 
 uint64_t ElfAddressConverter::VirtualAddrToBinaryAddr(uint64_t virtual_addr) const {
+  LOG(WARNING) << absl::Substitute("Adding virtual binary addr offset of $0", virtual_to_binary_addr_offset_);
   return virtual_addr + virtual_to_binary_addr_offset_;
 }
 
@@ -70,6 +71,9 @@ StatusOr<std::unique_ptr<ElfAddressConverter>> ElfAddressConverter::Create(ElfRe
     return Status(
         statuspb::INTERNAL,
         absl::Substitute("ElfAddressConverter::Create: Failed to parse /proc/$0/maps", pid));
+  }
+  for (auto& entry : map_entries) {
+    LOG(WARNING) << entry.Debug();
   }
   const auto mapped_virt_addr = map_entries[0].vmem_start;
   uint64_t mapped_offset;

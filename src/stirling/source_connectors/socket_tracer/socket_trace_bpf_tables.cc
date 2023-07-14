@@ -65,8 +65,9 @@ ConnInfoMapManager::ConnInfoMapManager(bpf_tools::BCCWrapper* bcc)
 
   // Use address instead of symbol to specify this probe,
   // so that even if debug symbols are stripped, the uprobe can still attach.
-  auto symbol_addr =
-      converter->VirtualAddrToBinaryAddr(reinterpret_cast<uint64_t>(&ConnInfoMapCleanupTrigger));
+  /* auto symbol_addr = */
+  /*     converter->VirtualAddrToBinaryAddr(reinterpret_cast<uint64_t>(&ConnInfoMapCleanupTrigger)); */
+  auto symbol_addr = reinterpret_cast<uint64_t>(&ConnInfoMapCleanupTrigger);
 
   bpf_tools::UProbeSpec uprobe{.binary_path = self_path,
                                .symbol = {},  // Keep GCC happy.
