@@ -57,10 +57,11 @@ def base_images():
         "distroless/base",
     )
 
-    _gcr_io_image(
-        "base_image_debug",
-        "sha256:c59a1e5509d1b2586e28b899667774e599b79d7289a6bb893766a0cbbce7384b",
-        "distroless/base",
+    container_pull(
+        name = "base_image_debug",
+        repository = "ubuntu",
+        registry = "docker.io/library",
+        digest = "sha256:965fbcae990b0467ed5657caceaec165018ef44a4d2d46c7cdea80a9dff0d1ea",
     )
 
     _gcr_io_image(
