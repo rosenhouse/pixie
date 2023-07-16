@@ -60,7 +60,7 @@ def base_images():
     container_pull(
         name = "base_image_debug",
         repository = "ubuntu",
-        registry = "docker.io/library",
+        registry = "harbor-repo.vmware.com/dockerhub-proxy-cache/library",
         digest = "sha256:965fbcae990b0467ed5657caceaec165018ef44a4d2d46c7cdea80a9dff0d1ea",
     )
 
