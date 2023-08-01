@@ -136,7 +136,7 @@ for (const [key, val] of Object.entries(jsonIn)) {
     name: getName(key, val),
     url: getCleanRepo(key, val),
     version: getVersion(key),
-    spdxId: getSpdxId(key, val),
+    spdxID: getSpdxId(key, val),
     licenseText: getLicenseText(key, val),
   });
 }
